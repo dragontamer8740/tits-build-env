@@ -1,0 +1,3 @@
+[submodule "sourceTiTS"]
+	path = sourceTiTS
+	url = https://github.com/OXOIndustries/TiTS-Public.git
