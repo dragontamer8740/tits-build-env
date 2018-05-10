@@ -54,10 +54,18 @@ java -Xmx1024M -Dsun.io.useCanonCaches=false -Duser.language=en \
 -o "$SCRIPTDIR""/bin/TiTS_uncompressed.swf"
 
 swfcombine -dz "$SCRIPTDIR""/bin/TiTS_uncompressed.swf" -o "$SCRIPTDIR""/bin/TiTS.swf"
-rm "$SCRIPTDIR""/bin/TiTS_uncompressed.swf"
-chmod 644 "$SCRIPTDIR""/bin/TiTS.swf"
+if [ -e "$SCRIPTDIR""/bin/TiTS.swf" ]; then # if swfcombine succeeded
+    rm "$SCRIPTDIR""/bin/TiTS_uncompressed.swf"
+    chmod 644 "$SCRIPTDIR""/bin/TiTS.swf"
+else
+    echo "==========================="
+    echo "WARNING!!! - 'swfcombine' could not be run. Leaving an *uncompressed* SWF file"
+    echo "in 'bin/' instead. This is sub-optimal. Please install 'swftools.'"
+    echo "==========================="
+fi
 # o obj/TiTSFD636027137937680723
 # '@echo off' in a windows bat.
 set +o xtrace
 #cd %OLDDIR%
 #@echo on
+echo "SWF output to 'bin/TiTS.swf'."

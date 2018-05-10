@@ -61,8 +61,15 @@ java \
 -o "$SCRIPTDIR""/bin/TiTS_AIR_uncompressed.swf"
 
 swfcombine -dz "$SCRIPTDIR""/bin/TiTS_AIR_uncompressed.swf" -o "$SCRIPTDIR""/bin/TiTS_AIR.swf"
-rm "$SCRIPTDIR""/bin/TiTS_AIR_uncompressed.swf"
-chmod 644 "$SCRIPTDIR""/bin/TiTS_AIR.swf"
+if [ -e "$SCRIPTDIR""/bin/TiTS_AIR.swf" ]; then
+    rm "$SCRIPTDIR""/bin/TiTS_AIR_uncompressed.swf"
+    chmod 644 "$SCRIPTDIR""/bin/TiTS_AIR.swf"
+else
+    echo "==========================="
+    echo "WARNING!!! - 'swfcombine' could not be run. Leaving an *uncompressed* SWF file"
+    echo "in 'bin/' instead. This is sub-optimal. Please install 'swftools.'"
+    echo "==========================="
+fi
 set +o xtrace
 #rem o obj/TiTSAIR636027137002854360
 #@echo off
