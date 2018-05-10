@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<application xmlns="http://ns.adobe.com/air/application/23.0"> 
+<!--Z:\home\wyatt\development\tits\tits-app.xml: error 305: Intial window content SWF version 34 exceeds namespace version http://ns.adobe.com/air/application/18.0-->
+    <id>com.dragontamer8740.tits</id> 
+	<!-- we are past 0.6.32 but this was the last time I updated this before I realized that android users can't easily downgrade if this is bumped. -->
+    <versionNumber>0.6.32</versionNumber> 
+    <filename>TiTS-droid</filename> 
+    <name>TiTS</name> 
+     <description> 
+        <text xml:lang="en">Trials in Tainted Space</text> 
+    </description> 
+    <copyright>Copyright (c) 2015-2016 Fenoxo and contributors</copyright> 
+    <initialWindow> 
+<!--        <content>./TiTS_0.6.67.swf</content> -->
+<!-- simplified for sake of automation of process -->	
+        <content>./TiTS_AIR.swf</content>
+        <fullScreen>true</fullScreen>
+        <aspectRatio>landscape</aspectRatio>
+        <autoOrients>false</autoOrients>
+        <visible>true</visible>
+        <renderMode>cpu</renderMode>
+    </initialWindow>
+    <icon> 
+        <image29x29>icons/Icon_29.png</image29x29> 
+        <image57x57>icons/Icon_57.png</image57x57> 
+        <image512x512>icons/Icon_512.png</image512x512>  
+
+    </icon> 
+<android>
+  <manifestAdditions>
+          <![CDATA[
+              <manifest android:installLocation="auto">
+            <uses-permission android:name="android.permission.INTERNET"/>
+			<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
+                  <supports-screens android:normalScreens="true"/>
+<!--                  <uses-feature android:required="true" android:name="android.hardware.touchscreen.multitouch"/>-->
+                  <application android:enabled="true">
+                      <activity android:excludeFromRecents="false">
+                          <intent-filter>
+                        <action android:name="android.intent.action.MAIN"/>
+                        <category android:name="android.intent.category.LAUNCHER"/>
+                          </intent-filter>
+                      </activity>
+                  </application>
+              </manifest>
+          ]]>
+      </manifestAdditions>
+    </android>
+	<iPhone>
+		<InfoAdditions>
+			<![CDATA[
+				<key>UIDeviceFamily</key>
+				<array>
+					<string>1</string>
+					<string>2</string>
+				</array>
+				<key>UIViewControllerBasedStatusBarAppearance</key>
+					<false/>
+			]]>
+		</InfoAdditions>
+		<requestedDisplayResolution>high</requestedDisplayResolution>
+	</iPhone>
+</application>
