@@ -62,7 +62,7 @@ these scripts. Examples are given in the scripts themselves.
 ## Building
 To use (short, SHORT version):
 
-###First run
+### First run
 
 The following commands are only needed before the first build of the game.
 You may need to edit configure.sh with your path to your AIR/Flex combined SDK.
@@ -76,7 +76,7 @@ generates XML files which contain a handful complete paths to files.
     $ git submodule update
     $ ./configure.sh
 
-###First and all future runs
+### First and all future runs
 
 After running the above at least once, run the following to build the game:
 
