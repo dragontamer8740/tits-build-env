@@ -13,7 +13,7 @@ work if set up correctly.
 ## Dependencies
 Needs FlashDevelop-plus-fl-libs-flex-AIR.7z, which I have uploaded separately
 due to space constraints. This contains the Flex and AIR SDK files needed to
-build the game.
+build the game. Unpack it into the root of the repository.
 
 [FlashDevelop-plus-fl-libs-flex-AIR.7z](https://mega.nz/#!bgY20bRD!6lEiUof-GS-Jkkhv3DGbSuHoc2OhvZjVqknpe7K2N0w) (351.5 MB)
 
