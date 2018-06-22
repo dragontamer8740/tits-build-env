@@ -11,49 +11,66 @@ It has not been tested at all in OS X, but I am fairly confident it will
 work if set up correctly.
 
 ## Dependencies
-Needs FlashDevelop-plus-fl-libs-flex-AIR.7z, which I have uploaded separately
-due to space constraints. This contains the Flex and AIR SDK files needed to
-build the game. Unpack it into the root of the repository.
+* [FlashDevelop-plus-fl-libs-flex-AIR.7z](https://mega.nz/#!bgY20bRD!6lEiUof-GS-Jkkhv3DGbSuHoc2OhvZjVqknpe7K2N0w) 
+(351.5 MB), which I have uploaded separately due to space constraints. This
+contains the Flex and AIR SDK files needed to build the game. Unpack it into
+the root of the repository.
 
-[FlashDevelop-plus-fl-libs-flex-AIR.7z](https://mega.nz/#!bgY20bRD!6lEiUof-GS-Jkkhv3DGbSuHoc2OhvZjVqknpe7K2N0w) (351.5 MB)
+* [Swftools](http://www.swftools.org/about.html). This might be in your package
+manager on linux/unix systems. In Cygwin, the normal windows binaries should
+work, or it can be compiled from source. Specifically, we need the
+`swfcombine` tool from it.
 
-Also needs [swftools](http://www.swftools.org/about.html). This might be in
-your package manager. Specifically, we need the 'swfcombine' tool from it.
+#### Using your own SDK
+Alternatively, one can use [FlashDevelop](http://www.flashdevelop.org/) to
+download the Flex and AIR SDK files and merge them together. If you do this,
+you will get a later version of the AIR SDK, so you will have to locate the
+instances of `flexairsdk/4.6.0+18.0.0` in the `buildDesktopSWF.sh` and
+`buildAIRSWF.sh` scripts and edit them accordingly. I don't know what else
+might break, so I don't really recommend this approach, but it is how I
+initially created my SDK.
+Also, note that running FlashDevelop on unix platforms requires the Mono
+runtime at a minimum.
 
-Alternatively, one can use FlashDevelop to download the Flex and AIR SDK files
-and merge them together. If you do this, you will get a later version of the
-AIR SDK, so you will have to locate the instances of `flexairsdk/4.6.0+18.0.0`
-in the `buildDesktopSWF.sh` and `buildAIRSWF.sh` scripts and edit them
-accordingly. I don't know what else might break, so I don't really recommend
-this approach.
-
-Additionally, I'd advise against trying to use the Apache Flex SDK, and instead
-recommend using the last version of Adobe's. I wish I could advise using
-Apache's, since it's open source, but I've never had any luck getting the game
-to build with it. It's been a while since I tried, though. Let me know if you
-try and get it to work.
+I'd advise against trying to use the Apache Flex SDK, and instead recommend
+using the last version of Adobe's. I wish I could advise using Apache's, since
+it's open source, but I've never had any luck getting the game to build with
+it. It's been a while since I tried, though. Let me know if you try and get it
+to work.
 
 ### Mobile building
+**ATTENTION**: The following applies ONLY to building the mobile apps. Just
+compiling a SWF does _not_ require any of this!
 
-Needs `zipalign` (or some minor editing of the scripts in `mobileapps/`) to
+* (*Recommended*) `zipalign` (or some minor editing of the scripts in `mobileapps/`) to
 make the Android APK's 100% holy. There's a sort-of-working hack implementation
 in a subdirectory, but I'd recommend installing the android SDK tools if you
-want to do this. The game will work without `zipalign`, but it could be
-marginally slower to start up. If `zipalign` is not found or fails, your APK
-file names will end with `_unaligned.apk`.
+want to do this. The scripts are set up for the official one, and my hacky one
+has a different command line syntax so the scripts would need tweaking. The
+only documentation for the hacky version's syntax is in the source code itself.
+The game will work without `zipalign`, but it could be marginally slower to
+start up.
+
+If `zipalign` is not found or fails, your APK file names will end
+with `_unaligned.apk`.
 
 Zipalign download links:
+* [Linux (Intel x86_64 CPU's)](https://dl.google.com/android/repository/platform-tools-latest-linux.zip)
+* [OS X (Intel CPU's)](https://dl.google.com/android/repository/platform-tools-latest-darwin.zip)
+* [Windows (Intel CPU's)](https://dl.google.com/android/repository/platform-tools-latest-windows.zip)
 
-  [Linux](https://dl.google.com/android/repository/platform-tools-latest-linux.zip)
+If you run linux on a non-x86_64 CPU architecture, such as i386 (32 bit x86)
+or MIPS, you might be able to find a prebuilt version of zipalign in your
+unix/linux distribution's package manager. In Debian Sid on Mips, the package
+name is currently `zipalign`.
 
-  [OS X](https://dl.google.com/android/repository/platform-tools-latest-darwin.zip)
+It looks like the Android tools sources do not support other architectures like
+PowerPC/SPARC, so you're probably on your own there. I tried.
 
-  [Windows](https://dl.google.com/android/repository/platform-tools-latest-windows.zip)
+* Wine
 
-Also needs a working wine installation, and an installation of a windows
-implementation of the Java JDK in wine. (JDK, not JRE - we need jarsigner).
-
-As currently implemented, you will have to provide the path to the Java
+* Windows implementation of the Java JDK, installed in wine. (JDK, not JRE -
+we need jarsigner). As currently implemented, you will have to provide the path to the Java
 installation in the .bat files in the mobileapps/ directory.
 
 You will also have to set the path to the Flex/AIR SDK windows programs in
