@@ -74,6 +74,16 @@ generates XML files which contain a handful complete paths to files.
 
     $ git submodule init
     $ git submodule update
+
+To update the source code submodule to the latest revision:
+
+    $ cd sourceTiTS
+    $ git pull
+    $ cd ../
+
+Finally, set up the XML configuration files (which tell `adt`, adobe's build
+tool, what it needs to do to compile the code):
+
     $ ./configure.sh
 
 ### First and all future runs
