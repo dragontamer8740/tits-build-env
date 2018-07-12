@@ -1,3 +1,8 @@
+
+# MOVED TO GITLAB.
+
+See https://gitlab.com/dragontamer8740/tits-build-env for the latest version.
+
 Linux Build environment for Trials in Tainted Space.
 
 Updated in 2018 for a little more portability and flexibility.
